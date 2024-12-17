@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:developer';
+
 
 void main() {
   runApp(MyApp());
@@ -12,10 +14,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pokémon Finder',
+      title: 'Pokémon & Dog Finder ',
       theme: ThemeData(primarySwatch: Colors.red),
-      home: PokemonSearchScreen(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2, // Número de pestañas
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Pokémon & Dog Finder'),
+          bottom: TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.catching_pokemon), text: 'Pokémon'),
+              Tab(icon: Icon(Icons.pets), text: 'Perros'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            PokemonSearchScreen(),
+            DogImageScreen(),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -130,6 +159,75 @@ class PokemonCard extends StatelessWidget {
             Text('Altura: ${data['height']}'),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DogImageScreen extends StatefulWidget {
+  const DogImageScreen({super.key});
+
+  @override
+  DogImageScreenState createState() => DogImageScreenState();
+}
+
+class DogImageScreenState extends State<DogImageScreen> {
+  String? dogImageUrl;
+  bool isLoading = false;
+
+  Future<void> fetchDogImage() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final response =
+          await http.get(Uri.parse('https://dog.ceo/api/breeds/image/random'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          dogImageUrl = data['message'];
+        });
+      } else {
+        setState(() {
+          dogImageUrl = null;
+        });
+      }
+    } catch (e) {
+      log('Error al obtener la imagen de perro: $e');
+      setState(() {
+        dogImageUrl = null;
+      });
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: fetchDogImage,
+            child: Text('Cargar Imagen de Perro'),
+          ),
+          SizedBox(height: 20),
+          isLoading
+              ? CircularProgressIndicator()
+              : dogImageUrl != null
+                  ? Image.network(
+                      dogImageUrl!,
+                      height: 250,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
+                  : Text('Presiona el botón para cargar una imagen'),
+        ],
       ),
     );
   }
