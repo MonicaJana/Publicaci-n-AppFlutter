@@ -206,29 +206,43 @@ class DogImageScreenState extends State<DogImageScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: fetchDogImage,
-            child: Text('Cargar Imagen de Perro'),
-          ),
-          SizedBox(height: 20),
-          isLoading
-              ? CircularProgressIndicator()
-              : dogImageUrl != null
-                  ? Image.network(
-                      dogImageUrl!,
-                      height: 250,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    )
-                  : Text('Presiona el botón para cargar una imagen'),
-        ],
+      child: Center(
+        child: isLoading
+            ? CircularProgressIndicator()
+            : dogImageUrl != null
+                ? Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    elevation: 8,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16.0),
+                        child: Image.network(
+                          dogImageUrl!,
+                          height: 200,
+                          width: 200,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  )
+                : Text(
+                    'Presiona el botón para cargar una imagen',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
       ),
-    );
-  }
+    ),
+    floatingActionButton: FloatingActionButton(
+      onPressed: fetchDogImage,
+      child: Icon(Icons.refresh),
+    ),
+  );
+}
+
 }
