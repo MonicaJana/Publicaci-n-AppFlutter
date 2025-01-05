@@ -1,26 +1,36 @@
-# flutter_api
 
-A new Flutter project.
+Publicar la Aplicación  en Amazon Store
 
-## Getting Started
+1. Registro en Amazon Developer
+  * Accede a Amazon Developer Console.
+  * Regístrate o inicia sesión con tu cuenta de Amazon.
+  * Completa el formulario de registro como desarrollador.
 
-This project is a starting point for a Flutter application.
+![image](https://github.com/user-attachments/assets/aee1279f-6e71-4e7f-b5fe-f1bea44afe22)
 
-A few resources to get you started if this is your first Flutter project:
+2. Completar la Información de la Aplicación
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Rellena los campos obligatorios en las siguientes secciones:
+  * Descripción: Información detallada sobre las funcionalidades.
+  * Características: Palabras clave y beneficios de la aplicación.
+  * Recursos multimedia: Sube el icono y las capturas de pantalla.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Asegúrate de que toda la información esté en el idioma del mercado objetivo.
 
----
-The application has two tabs. In the first tab you can search for a pokemon by name:
+![image](https://github.com/user-attachments/assets/7fa4010b-6e41-4f6c-b906-74f545902b19)
 
-![Captura de pantalla 2024-12-17 001237](https://github.com/user-attachments/assets/1b53f4db-b5ff-4e07-b658-df095596162c)
+![image](https://github.com/user-attachments/assets/c19d866b-6cb7-4bd9-96c7-d3830289e3bb)
 
-The second tab displays images of dogs every time you press the load dog image button:
+![image](https://github.com/user-attachments/assets/8d5eb480-6a5c-48b5-abe6-a3e4bfce729d)
 
-![Captura de pantalla 2024-12-17 001932](https://github.com/user-attachments/assets/cbf7faf9-937f-4af5-9791-13dabcee845d)
+
+3. Una vez aceptada la  APP  nos mostrara que ya esta disponible en Amazon Store
+
+![image](https://github.com/user-attachments/assets/e6c8b451-a17d-412b-9123-b2ec80675e6f)
+
+4. Aplicacion ya disponible en Amazon Store
+
+| ![image](https://github.com/user-attachments/assets/388ff44c-2cdf-499b-9d09-61f222a76713) | ![Imagen de WhatsApp 2025-01-04 a las 23 33 06_fedb1980](https://github.com/user-attachments/assets/755efea3-b01c-4203-bcd8-94e8fddd7459) |
+|:------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+
 
